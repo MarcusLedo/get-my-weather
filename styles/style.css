@@ -1,0 +1,90 @@
+body {
+  height: 100vh;
+}
+.logo-label {
+  font-size: 1.8rem;
+  letter-spacing: 4px;
+}
+
+.toggle-light-dark {
+  border: 0;
+  margin: 0;
+  background-color: white;
+}
+
+.light-dark-mode {
+  color: #0a58ca;
+}
+
+.nav-right-section {
+  display: flex;
+  align-items: baseline;
+}
+
+.weather-data-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1em 1rem 2rem;
+  border-radius: 30px;
+  padding: 104px 0;
+
+  background-image: url(/images/sergey-pesterev-tMvuB9se2uQ-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.city-information {
+  display: flex;
+  height: 90%;
+
+  flex-direction: column;
+}
+
+.weather-data {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 95%;
+}
+
+.city-name-text {
+  font-size: 3.8rem;
+  color: white;
+}
+
+.date-text {
+  color: white;
+}
+
+.wind-rain {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin-top: 30px;
+
+  padding: 12px 12px;
+  width: 70%;
+  border-radius: 30px;
+}
+
+.temperature-information {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-image: linear-gradient(160deg, #0093e9 0%, #0a58ca 100%);
+
+  border-radius: 30px;
+}
+
+.weather-icon {
+  width: 175px;
+}
+
+.temperature-text {
+  color: white;
+  font-size: 2.8rem;
+  font-weight: 600;
+}
