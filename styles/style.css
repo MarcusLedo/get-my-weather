@@ -1,6 +1,7 @@
 body {
   height: 100vh;
 }
+
 .logo-label {
   font-size: 1.8rem;
   letter-spacing: 4px;
@@ -60,6 +61,7 @@ body {
 
 .wind-rain {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   background-color: white;
   margin-top: 30px;
@@ -87,4 +89,108 @@ body {
   color: white;
   font-size: 2.8rem;
   font-weight: 600;
+}
+
+.slider-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1em 1rem 2rem;
+}
+
+.slider-paragraph {
+  margin-left: 8rem;
+}
+
+.carousel-inner {
+  border-radius: 30px;
+
+  width: 80vh;
+  height: 445px;
+}
+
+.c-label {
+  font-size: 3rem;
+}
+
+.c-img {
+  filter: brightness(0.7);
+}
+
+.c-img-1 {
+  object-fit: cover;
+  height: 542px;
+}
+
+.c-img-2 {
+  object-fit: cover;
+  height: 542px;
+}
+
+.c-img-3 {
+  object-fit: cover;
+  height: 542px;
+}
+
+.info-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weather-icon-info {
+  width: 10rem;
+}
+
+.city-name-info {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 4%;
+}
+
+.temperature-text-info {
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 1469px) {
+  .slider-banner {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slider-paragraph {
+    margin-left: 0;
+  }
+
+  .carousel-inner {
+    width: 80vh;
+  }
+}
+
+@media screen and (max-width: 1040px) {
+  .carousel-inner {
+    width: 60vh;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .weather-data {
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .city-information {
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10%;
+  }
+
+  .carousel-inner {
+    width: 40vh;
+  }
 }
