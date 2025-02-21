@@ -3,7 +3,527 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Get My Weather</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Gekkou</title>
   </head>
-  <body></body>
+  <body>
+    <nav class="navbar bg-light">
+      <div class="container-fluid">
+        <a class="logo logo-label navbar-brand ms-2"
+          >GEKKOU
+          <svg
+            class="logo logo-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="1.5rem"
+            height="2.2rem"
+            fill="currentColor"
+            class="bi bi-moon-fill"
+            viewBox="0 2.5 16 16"
+          >
+            <path
+              d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"
+            /></svg
+        ></a>
+
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="#faq">FAQ</a>
+          </li>
+        </ul>
+
+        <div class="nav-right-section">
+          <button class="vanillabtn toggle-light-dark rounded-pill me-3">
+            <svg
+              class="light-dark-mode"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              class="bi bi-brightness-high-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"
+              />
+            </svg>
+          </button>
+
+          <form class="d-flex" role="search">
+            <input
+              class="form-control"
+              type="search"
+              placeholder="Location"
+              aria-label="Search"
+            />
+            <button
+              class="btn btn-primary ms-2 me-2 rounded-pill"
+              type="submit"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                fill="currentColor"
+                class="bi bi-search"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+                />
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="weather-data-banner mb-5">
+        <section class="weather-data">
+          <div class="city-information">
+            <div class="city-name-data">
+              <h2 class="city-name-text">Atlantis</h2>
+              <span class="date-text">Thursday, Feb 20</span>
+            </div>
+            <div class="wind-rain">
+              <div>
+                <span>
+                  <svg
+                    class="wind-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-wind"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5m-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2M0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5"
+                    />
+                  </svg>
+                </span>
+                <span class="wind-text">Wind 3km/h</span>
+              </div>
+
+              <div>
+                <span>
+                  <svg
+                    class="umbrella-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-umbrella-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M8 0a.5.5 0 0 1 .5.5v.514C12.625 1.238 16 4.22 16 8c0 0 0 .5-.5.5-.149 0-.352-.145-.352-.145l-.004-.004-.025-.023a3.5 3.5 0 0 0-.555-.394A3.17 3.17 0 0 0 13 7.5c-.638 0-1.178.213-1.564.434a3.5 3.5 0 0 0-.555.394l-.025.023-.003.003s-.204.146-.353.146-.352-.145-.352-.145l-.004-.004-.025-.023a3.5 3.5 0 0 0-.555-.394 3.3 3.3 0 0 0-1.064-.39V13.5H8h.5v.039l-.005.083a3 3 0 0 1-.298 1.102 2.26 2.26 0 0 1-.763.88C7.06 15.851 6.587 16 6 16s-1.061-.148-1.434-.396a2.26 2.26 0 0 1-.763-.88 3 3 0 0 1-.302-1.185v-.025l-.001-.009v-.003s0-.002.5-.002h-.5V13a.5.5 0 0 1 1 0v.506l.003.044a2 2 0 0 0 .195.726c.095.191.23.367.423.495.19.127.466.229.879.229s.689-.102.879-.229c.193-.128.328-.304.424-.495a2 2 0 0 0 .197-.77V7.544a3.3 3.3 0 0 0-1.064.39 3.5 3.5 0 0 0-.58.417l-.004.004S5.65 8.5 5.5 8.5s-.352-.145-.352-.145l-.004-.004a3.5 3.5 0 0 0-.58-.417A3.17 3.17 0 0 0 3 7.5c-.638 0-1.177.213-1.564.434a3.5 3.5 0 0 0-.58.417l-.004.004S.65 8.5.5 8.5C0 8.5 0 8 0 8c0-3.78 3.375-6.762 7.5-6.986V.5A.5.5 0 0 1 8 0"
+                    />
+                  </svg>
+                </span>
+                <span class="rain-text"> Rain 78% </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="temperature-information">
+            <img
+              class="weather-icon"
+              src="/images/weather_icons/cloudy-3-day.svg"
+              alt=""
+            />
+            <span class="temperature-text">25℃</span>
+          </div>
+        </section>
+      </section>
+
+      <section class="slider-banner mt-5 mb-5">
+        <div class="slider-paragraph">
+          <h2>Current weather around the world</h2>
+          <p>
+            <b>Note:</b> those are not real places (not real data). I'm just
+            playing with carousel.
+          </p>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id iure
+            alias, odit similique repellendus atque nostrum libero.
+          </p>
+        </div>
+        <div
+          id="carouselExampleCaptions"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="8000">
+              <img
+                src="./images/Limsa.jpg"
+                class="d-block w-100 c-img c-img-1"
+                alt="..."
+              />
+              <div class="carousel-caption top-0 mt-5">
+                <div class="info-div">
+                  <img
+                    class="weather-icon-info"
+                    src="/images/weather_icons/cloudy-3-day.svg"
+                    alt=""
+                  />
+                  <span class="city-name-info">Limsa Lominsa</span>
+                  <span class="temperature-text-info">32℃</span>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="8000">
+              <img
+                src="./images/stormwind.jpg"
+                class="d-block w-100 c-img c-img-2"
+                alt="..."
+              />
+              <div class="carousel-caption top-0 mt-5">
+                <div class="info-div">
+                  <img
+                    class="weather-icon-info"
+                    src="/images/weather_icons/clear-day.svg"
+                    alt=""
+                  />
+                  <span class="city-name-info">Stormwind</span>
+                  <span class="temperature-text-info">27℃</span>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="8000">
+              <img
+                src="./images/irithyll.jpg"
+                class="d-block w-100 c-img c-img-3"
+                alt="..."
+              />
+              <div class="carousel-caption top-0 mt-5">
+                <div class="info-div">
+                  <img
+                    class="weather-icon-info"
+                    src="/images/weather_icons/snowy-3-night.svg"
+                    alt=""
+                  />
+                  <span class="city-name-info">Irithyll</span>
+                  <span class="temperature-text-info">-15℃</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="cards-section mt-5">
+        <div class="cards-sec-label mb-3">
+          <h2>Are you feeling lucky?</h2>
+          <span class="cards-sec-bottom-text ms-3"
+            >I know this has not to do with weather, but I need to see how cards
+            work 😿</span
+          >
+        </div>
+        <div class="cards">
+          <div class="card" style="width: 18rem">
+            <img
+              src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/32b2d354-70d4-4b69-bba7-81de32431c60/d4q7zpc-3856c827-59f2-4f68-b4e1-4819880efd87.png/v1/fit/w_828,h_1166/persona_tarot_card_hd___the_fool_by_the_stein_d4q7zpc-414w-2x.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI2OCIsInBhdGgiOiJcL2ZcLzMyYjJkMzU0LTcwZDQtNGI2OS1iYmE3LTgxZGUzMjQzMWM2MFwvZDRxN3pwYy0zODU2YzgyNy01OWYyLTRmNjgtYjRlMS00ODE5ODgwZWZkODcucG5nIiwid2lkdGgiOiI8PTkwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.5Vd3pmj93sj6A5MDVAT34K_fLyWna-bF8jRoz1Yprzk"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">The Fool</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem">
+            <img
+              src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/32b2d354-70d4-4b69-bba7-81de32431c60/d4qlytc-161b0b72-3c46-4a2e-9a8a-f7ae3de4563f.png/v1/fit/w_828,h_1166/persona_tarot_card_hd___the_magician_by_the_stein_d4qlytc-414w-2x.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI2OCIsInBhdGgiOiJcL2ZcLzMyYjJkMzU0LTcwZDQtNGI2OS1iYmE3LTgxZGUzMjQzMWM2MFwvZDRxbHl0Yy0xNjFiMGI3Mi0zYzQ2LTRhMmUtOWE4YS1mN2FlM2RlNDU2M2YucG5nIiwid2lkdGgiOiI8PTkwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.gEzX28pzUyIxHcdMTTmNkUynHsfL2BsHXtg_gPp0DU0"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">The Magician</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem">
+            <img
+              src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/32b2d354-70d4-4b69-bba7-81de32431c60/d4qqc2z-dbe33852-c178-4808-8fcb-f39f8c083e4c.png/v1/fit/w_828,h_1166/persona_tarot_card_hd___the_high_priestess_by_the_stein_d4qqc2z-414w-2x.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI2OCIsInBhdGgiOiJcL2ZcLzMyYjJkMzU0LTcwZDQtNGI2OS1iYmE3LTgxZGUzMjQzMWM2MFwvZDRxcWMyei1kYmUzMzg1Mi1jMTc4LTQ4MDgtOGZjYi1mMzlmOGMwODNlNGMucG5nIiwid2lkdGgiOiI8PTkwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.L3IcLIM9CUCrmGVy8nDeM-ii8bpMIpMTYc5rBAeClB4"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">The High Priestess</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem">
+            <img
+              src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/32b2d354-70d4-4b69-bba7-81de32431c60/d4r6ygl-2644561d-a2c9-43e3-9c58-666f841b4662.png/v1/fit/w_828,h_1166/persona_tarot_card_hd___the_empress_by_the_stein_d4r6ygl-414w-2x.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI2OCIsInBhdGgiOiJcL2ZcLzMyYjJkMzU0LTcwZDQtNGI2OS1iYmE3LTgxZGUzMjQzMWM2MFwvZDRyNnlnbC0yNjQ0NTYxZC1hMmM5LTQzZTMtOWM1OC02NjZmODQxYjQ2NjIucG5nIiwid2lkdGgiOiI8PTkwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.DOQo1cOaqSDs8i4FjWQ1vjjr4nSCB-0_Y0wqerxKF8g"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">The Fool</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem">
+            <img
+              src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/32b2d354-70d4-4b69-bba7-81de32431c60/d4rwtb4-89d244ab-f654-4d21-a7e7-68858af48fe4.png/v1/fit/w_828,h_1166/persona_tarot_card_hd___the_emperor_by_the_stein_d4rwtb4-414w-2x.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI2OCIsInBhdGgiOiJcL2ZcLzMyYjJkMzU0LTcwZDQtNGI2OS1iYmE3LTgxZGUzMjQzMWM2MFwvZDRyd3RiNC04OWQyNDRhYi1mNjU0LTRkMjEtYTdlNy02ODg1OGFmNDhmZTQucG5nIiwid2lkdGgiOiI8PTkwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.S93cnKwIZQrroEPnwe-_Qc5XEwXqpI0KFwTqNb4ChIQ"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">The Emperor</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem">
+            <img
+              src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/32b2d354-70d4-4b69-bba7-81de32431c60/d4sn3f1-b733c68e-6b8d-4e36-a149-1a3aaf416798.png/v1/fit/w_828,h_1166/persona_tarot_card_hd___the_hierophant_by_the_stein_d4sn3f1-414w-2x.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI2OCIsInBhdGgiOiJcL2ZcLzMyYjJkMzU0LTcwZDQtNGI2OS1iYmE3LTgxZGUzMjQzMWM2MFwvZDRzbjNmMS1iNzMzYzY4ZS02YjhkLTRlMzYtYTE0OS0xYTNhYWY0MTY3OTgucG5nIiwid2lkdGgiOiI8PTkwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.reF7bcohwQbi1vQhyzBHhwgkNEStPoulH8-Jo8iGx9A"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">The Hierophant</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem">
+            <img
+              src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/32b2d354-70d4-4b69-bba7-81de32431c60/d4sxbt9-7bece4aa-0915-4b06-8d3f-8df74205f3bb.png/v1/fit/w_828,h_1166/persona_tarot_card_hd___the_lovers_by_the_stein_d4sxbt9-414w-2x.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI2OCIsInBhdGgiOiJcL2ZcLzMyYjJkMzU0LTcwZDQtNGI2OS1iYmE3LTgxZGUzMjQzMWM2MFwvZDRzeGJ0OS03YmVjZTRhYS0wOTE1LTRiMDYtOGQzZi04ZGY3NDIwNWYzYmIucG5nIiwid2lkdGgiOiI8PTkwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.OvfeLLx-Sh6_SD7k8-4hx5IKC6fKZmsNH7toSZfrKO4"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">The Lovers</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem">
+            <img
+              src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/32b2d354-70d4-4b69-bba7-81de32431c60/d4thi10-b3ff6a31-ba0c-4040-b74c-6c636a40afa4.png/v1/fit/w_828,h_1166/persona_tarot_card_hd___the_chariot_by_the_stein_d4thi10-414w-2x.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI2OCIsInBhdGgiOiJcL2ZcLzMyYjJkMzU0LTcwZDQtNGI2OS1iYmE3LTgxZGUzMjQzMWM2MFwvZDR0aGkxMC1iM2ZmNmEzMS1iYTBjLTQwNDAtYjc0Yy02YzYzNmE0MGFmYTQucG5nIiwid2lkdGgiOiI8PTkwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.uWFb-rHSskKXzrKAf7eOMDJJ8D912JQUGOsWsT61-go"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">The Chariot</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="faq mt-5 my-mb">
+        <h2 class="text-center mb-3">FAQ</h2>
+        <div class="faq-container">
+          <div class="accordion w-50 mx-auto" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                >
+                  Why is the page called "Gekkou"?
+                </button>
+              </h2>
+              <div
+                id="collapseOne"
+                class="accordion-collapse collapse show"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  Well, the page needs a name and I didn't want to give a boring
+                  name like "Get My Weather". Besides, I like the pronuciation
+                  and the meaning of "Gekkou", it's a japanese word that means
+                  moonlight (月光).
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="collapseTwo"
+                >
+                  Why am I asking for an API key?
+                </button>
+              </h2>
+              <div
+                id="collapseTwo"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  Because it's not a good practice to hardcode your API key. An
+                  API key is something you should keep it private, like a
+                  password. This is why I will not use my own API key. I know
+                  this is just for educational purposes, but it's a good idea to
+                  create good habits now.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseThree"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                >
+                  Why?
+                </button>
+              </h2>
+              <div
+                id="collapseThree"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">Why not?</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <span class="footer-text"
+          >Designed and built by me! Marcus (Callisto)!</span
+        >
+        <div class="socials">
+          <a class="social-link" href="https://github.com/MarcusLedo">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              class="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"
+              />
+            </svg>
+          </a>
+
+          <a class="social-link" href="https://br.linkedin.com/in/marcusledo">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              class="bi bi-linkedin"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-logo">
+        <span class="logo logo-label"
+          >GEKKOU
+          <svg
+            class="logo logo-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="1.5rem"
+            height="2.2rem"
+            fill="currentColor"
+            class="bi bi-moon-fill"
+            viewBox="0 2.5 16 16"
+          >
+            <path
+              d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"
+            /></svg
+        ></span>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
