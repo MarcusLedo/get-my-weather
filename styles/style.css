@@ -2,6 +2,10 @@ body {
   height: 100vh;
 }
 
+.my-mb {
+  margin-bottom: 3rem;
+}
+
 .logo-label {
   font-size: 1.8rem;
   letter-spacing: 4px;
@@ -181,7 +185,35 @@ body {
 .card {
   margin: 0 0.5rem;
   margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+}
+
+.faq {
+  padding-bottom: 2.8rem;
+}
+
+footer {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+
+  padding-left: 1.4rem;
+  padding-right: 1.4rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+
+  background-color: #e9ecef;
+}
+
+.footer-text {
+  font-size: 0.8rem;
+  color: rgb(91, 91, 91);
+}
+
+.social-link {
+  color: grey;
+  text-decoration: none;
+
+  margin: 1.2% 0.8%;
 }
 
 @media screen and (max-width: 1469px) {
@@ -223,5 +255,18 @@ body {
 
   .carousel-inner {
     width: 40vh;
+  }
+
+  footer {
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
