@@ -27,7 +27,12 @@
 
         <form class="modal-form" action="">
           <div class="mb-3">
-            <label for="key" class="form-label">API key:</label>
+            <label for="key" class="form-label"
+              >API key:
+              <span class="invalid-api-key text-danger ms-3 make-it-invisible"
+                >Unauthorized! Invalid API key!</span
+              ></label
+            >
             <input
               type="tetx"
               class="api-input-field form-control"

@@ -9,6 +9,7 @@ const searchForm = document.querySelector(".search-form");
 const modalForm = document.querySelector(".modal-form");
 const btnSubmitAPI = document.querySelector(".btn-submit-api");
 const APIInputField = document.querySelector(".api-input-field");
+const invalidAPIKey = document.querySelector(".invalid-api-key");
 
 //MODAL DOM
 const modal = document.getElementById("modal");
@@ -28,10 +29,16 @@ searchForm.addEventListener("submit", function (e) {
   }
 });
 
-modalForm.addEventListener("submit", function (e) {
+modalForm.addEventListener("submit", async function (e) {
   e.preventDefault();
-  APIkey = APIInputField.value;
-  closeModal(modal);
+  console.log(await isAPIKeyValid(APIInputField.value));
+  if (await isAPIKeyValid(APIInputField.value)) {
+    APIkey = APIInputField.value;
+    closeModal(modal);
+  } else {
+    // RENDER ERROR MESSAGE
+    invalidAPIKey.classList.add("make-it-visible");
+  }
 });
 
 closeModalBtn.addEventListener("click", function (e) {
@@ -41,6 +48,15 @@ closeModalBtn.addEventListener("click", function (e) {
 function isThereAnAPIKey(key) {
   if (key) return true;
   else return false;
+}
+
+async function isAPIKeyValid(key) {
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=${key}`;
+  const res = await fetch(url);
+  console.log(res);
+
+  if (res.statusText === "Unauthorized") return false;
+  else return true;
 }
 
 function closeModal(modal) {
