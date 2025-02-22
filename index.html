@@ -13,6 +13,49 @@
     <title>Gekkou</title>
   </head>
   <body>
+    <!--MODAL DIV START-->
+    <div class="my-modal" id="modal">
+      <div class="my-modal-inner">
+        <h2>Hold on, Partner ✋🤠</h2>
+        <h3>You need an API Key to use this feature!</h3>
+        <p class="modal-paragraph">
+          This web page uses the OpenWeather API. If you want to search for a
+          city, you'll need an API key from OpenWeather. Go grab one and then
+          paste it <b>here</b> (for more information, check this
+          <a href="https://openweathermap.org/api"> link</a>):
+        </p>
+
+        <form class="modal-form" action="">
+          <div class="mb-3">
+            <label for="key" class="form-label"
+              >API key:
+              <span class="invalid-api-key text-danger ms-3 make-it-invisible"
+                >Unauthorized! Invalid API key!</span
+              ></label
+            >
+            <input
+              type="tetx"
+              class="api-input-field form-control"
+              id="key"
+              required
+            />
+            <button
+              type="submit"
+              class="btn btn-submit-api btn-primary mt-3 mb-3"
+            >
+              Submit
+            </button>
+            <div id="emailHelp" class="form-text">
+              Surely I'll never share your API key with anyone else.
+            </div>
+          </div>
+        </form>
+
+        <button class="btn btn-close-model btn-danger">close</button>
+      </div>
+    </div>
+    <!--MODAL DIV END-->
+
     <nav class="navbar bg-light">
       <div class="container-fluid">
         <a class="logo logo-label navbar-brand ms-2"
@@ -54,15 +97,15 @@
             </svg>
           </button>
 
-          <form class="d-flex" role="search">
+          <form class="d-flex search-form" role="search">
             <input
-              class="form-control"
+              class="form-control search-bar"
               type="search"
               placeholder="Location"
               aria-label="Search"
             />
             <button
-              class="btn btn-primary ms-2 me-2 rounded-pill"
+              class="btn btn-primary ms-2 me-2 rounded-pill search-btn"
               type="submit"
             >
               <svg
@@ -525,5 +568,7 @@
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
+
+    <script src="./scripts/app.js"></script>
   </body>
 </html>
