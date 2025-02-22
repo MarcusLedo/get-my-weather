@@ -14,15 +14,18 @@ const invalidAPIKey = document.querySelector(".invalid-api-key");
 //MODAL DOM
 const modal = document.getElementById("modal");
 const closeModalBtn = document.querySelector(".btn-close-model");
+let city = "";
 
+// BACK-END VARIABLES
 let APIkey = "";
 
 searchForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  console.log("submit");
 
   if (isThereAnAPIKey(APIkey)) {
     // CONTINUES EXECUTION NORMALLY
+    city = searchBar.value; //Getting the search term (the city)
+    console.log(city);
   } else {
     // RENDER POP UP ASKING FOR AN API KEY
     modal.classList.add("my-modal-open");
@@ -31,7 +34,6 @@ searchForm.addEventListener("submit", function (e) {
 
 modalForm.addEventListener("submit", async function (e) {
   e.preventDefault();
-  console.log(await isAPIKeyValid(APIInputField.value));
   if (await isAPIKeyValid(APIInputField.value)) {
     APIkey = APIInputField.value;
     closeModal(modal);
@@ -55,7 +57,7 @@ async function isAPIKeyValid(key) {
   const res = await fetch(url);
   console.log(res);
 
-  if (res.statusText === "Unauthorized") return false;
+  if (res.status === 401) return false;
   else return true;
 }
 
