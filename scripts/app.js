@@ -156,6 +156,10 @@ function updateWeatherSection(city) {
   windSpeed.innerText = city["wind"].toString();
   cityHumidity.innerText = city["humidity"].toString();
   cityTemperature.innerText = city["temperature"].toString() + "℃";
+  weatherIcon.setAttribute(
+    "src",
+    `/images/weather_icons/${city.weatherIcon}.svg`
+  );
 }
 
 function getCityNameElem() {
