@@ -68,14 +68,13 @@ function isThereAnAPIKey(key) {
 async function isAPIKeyValid(key) {
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=${key}`;
   const res = await fetch(url);
-  console.log(res);
 
   if (res.status === 401) return false;
   else return true;
 }
 
 async function getWeatherData(cityName, key) {
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${key}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&type=hour&units=metric&appid=${key}`;
   const res = await fetch(url);
   const data = await res.json();
 
@@ -92,8 +91,15 @@ function constructCityObject(data) {
   city.weatherIcon = data.weather[0].icon;
   city.humidity = data.main.humidity;
   city.wind = data.wind.speed;
+  city.date = convertUnixTimeToLocalTime(data.dt, data.timezone);
 
   return city;
+}
+
+function convertUnixTimeToLocalTime(unixTime, timezone) {
+  const date = new Date((unixTime + timezone) * 1000);
+
+  return date.toUTCString();
 }
 
 function closeModal(modal) {
