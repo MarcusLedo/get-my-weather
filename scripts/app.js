@@ -91,15 +91,47 @@ function constructCityObject(data) {
   city.weatherIcon = data.weather[0].icon;
   city.humidity = data.main.humidity;
   city.wind = data.wind.speed;
-  city.date = convertUnixTimeToLocalTime(data.dt, data.timezone);
+  city.date = getDateString(data.dt, data.timezone);
 
   return city;
+}
+
+function getDateString(unixTime, timezone) {
+  const date = convertUnixTimeToLocalTime(unixTime, timezone);
+  const dateArr = date.replace(",", "").split(" ");
+  const dayText = getFullDayName(dateArr[0]);
+  const dayNumber = dateArr[1];
+  const month = dateArr[2];
+
+  return `${dayText}, ${month} ${dayNumber}`;
 }
 
 function convertUnixTimeToLocalTime(unixTime, timezone) {
   const date = new Date((unixTime + timezone) * 1000);
 
   return date.toUTCString();
+}
+
+// Please, don't laugh at me. I wasn't able to find a built in function to do this
+// I'm so tired of dealing with dates without a third party library
+// AAAAAAAAAAAA
+function getFullDayName(shortDay) {
+  switch (shortDay) {
+    case "Sun":
+      return "Sunday";
+    case "Mon":
+      return "Monday";
+    case "Tue":
+      return "Tuesday";
+    case "Wed":
+      return "Wednesday";
+    case "Thu":
+      return "Thursday";
+    case "Fri":
+      return "Friday";
+    case "Sat":
+      return "Saturday";
+  }
 }
 
 function closeModal(modal) {
