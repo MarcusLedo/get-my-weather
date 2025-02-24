@@ -103,6 +103,7 @@ function getDateString(unixTime, timezone) {
   const dayNumber = dateArr[1];
   const month = dateArr[2];
 
+  // Ex.: "Monday, Feb 24"
   return `${dayText}, ${month} ${dayNumber}`;
 }
 
