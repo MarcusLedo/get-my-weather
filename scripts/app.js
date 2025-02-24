@@ -15,6 +15,10 @@ const invalidAPIKey = document.querySelector(".invalid-api-key");
 const modal = document.getElementById("modal");
 const closeModalBtn = document.querySelector(".btn-close-model");
 
+// WEATHER BANNER DOM
+const weatherBanner = document.querySelector(".weather-data-banner");
+const weatherDataSection = document.querySelector(".weather-data");
+
 // BACK-END VARIABLES
 let APIkey = "";
 let searchTerm = "";
@@ -36,7 +40,9 @@ searchForm.addEventListener("submit", async function (e) {
     weatherData = await getWeatherData(searchTerm, APIkey);
     // Building an object with the data
     city = constructCityObject(weatherData);
-    console.log(city);
+
+    //Update the page with the city info
+    updateWeatherSection(city);
   } else {
     // RENDER POP UP ASKING FOR AN API KEY
     modal.classList.add("my-modal-open");
@@ -133,6 +139,47 @@ function getFullDayName(shortDay) {
     case "Sat":
       return "Saturday";
   }
+}
+
+function updateWeatherSection(city) {
+  const cityName = getCityNameElem();
+  const cityDate = getCityDateElem();
+  const windSpeed = getWindSpeedElem();
+  const cityHumidity = getHumidityElem();
+  const weatherIcon = getWeatherIconElem();
+  const cityTemperature = getTemperatureElem();
+
+  console.log(city);
+
+  cityName.innerText = city.name;
+  cityDate.innerText = city.date;
+  windSpeed.innerText = city["wind"].toString();
+  cityHumidity.innerText = city["humidity"].toString();
+  cityTemperature.innerText = city["temperature"].toString() + "℃";
+}
+
+function getCityNameElem() {
+  return document.querySelector(".city-name-text");
+}
+
+function getCityDateElem() {
+  return document.querySelector(".date-text");
+}
+
+function getWindSpeedElem() {
+  return document.querySelector(".wind-speed");
+}
+
+function getHumidityElem() {
+  return document.querySelector(".humidity");
+}
+
+function getWeatherIconElem() {
+  return document.querySelector(".weather-icon");
+}
+
+function getTemperatureElem() {
+  return document.querySelector(".temperature-text");
 }
 
 function closeModal(modal) {
