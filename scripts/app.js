@@ -38,11 +38,17 @@ searchForm.addEventListener("submit", async function (e) {
 
     //Getting the data from the API
     weatherData = await getWeatherData(searchTerm, APIkey);
-    // Building an object with the data
-    city = constructCityObject(weatherData);
 
-    //Update the page with the city info
-    updateWeatherSection(city);
+    if (weatherData.cod === "404") {
+      // CITY NOT FOUND (RENDER ALERT)
+      createAlert("City not Found!");
+      console.log("CITY NOT FOUND");
+    } else {
+      // Building an object with the data
+      city = constructCityObject(weatherData);
+      //Update the page with the city info
+      updateWeatherSection(city);
+    }
   } else {
     // RENDER POP UP ASKING FOR AN API KEY
     modal.classList.add("my-modal-open");
@@ -184,6 +190,31 @@ function getWeatherIconElem() {
 
 function getTemperatureElem() {
   return document.querySelector(".temperature-text");
+}
+
+function createAlert(message) {
+  const div = document.createElement("div");
+  const p = document.createElement("p");
+  const btn = document.createElement("button");
+
+  div.classList.add(
+    "alert",
+    "alert-danger",
+    "alert-dismissible",
+    "fade",
+    "show"
+  );
+
+  div.setAttribute("role", "alert");
+
+  p.innerText = message;
+  btn.setAttribute("type", "button");
+  btn.classList.add("btn-close");
+  btn.setAttribute("data-bs-dismiss", "alert");
+
+  div.append(p);
+  div.append(btn);
+  document.querySelector("main").prepend(div);
 }
 
 function closeModal(modal) {
