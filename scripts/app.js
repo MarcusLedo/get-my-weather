@@ -217,6 +217,18 @@ function createAlert(message) {
   document.querySelector("main").prepend(div);
 }
 
+function toggleLightAndDarkMode() {
+  // Change Navbar class="navbar bg-dark" data-bs-theme="dark"
+  // button add bg-dark
+  // body bg-dark
+  // change banner img
+  // change text color (carousel)
+  // change text-color (cards)
+  // change cards color (cards)
+  // change FAQ Color (accordion)
+  // change footer color
+}
+
 function closeModal(modal) {
   modal.classList.remove("my-modal-open");
 }
