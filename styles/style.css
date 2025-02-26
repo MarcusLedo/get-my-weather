@@ -306,6 +306,18 @@ footer {
   .carousel-inner {
     width: 60vh;
   }
+
+  .my-modal-inner {
+    width: 90%;
+  }
+
+  .modal-paragraph {
+    font-size: 0.9rem;
+  }
+
+  .invalid-api-key {
+    font-size: 0.7rem;
+  }
 }
 
 @media screen and (max-width: 750px) {
