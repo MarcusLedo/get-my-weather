@@ -1,5 +1,10 @@
 body {
   height: 100vh;
+  transition: all 0.3s;
+}
+
+.navbar {
+  transition: all 0.3s;
 }
 
 .my-mb {
@@ -14,8 +19,7 @@ body {
 .toggle-light-dark {
   border: 0;
   margin: 0;
-  background-color: white;
-  transition: all 1s;
+  background-color: transparent;
 }
 
 .light-dark-mode {
@@ -25,6 +29,19 @@ body {
 .nav-right-section {
   display: flex;
   align-items: baseline;
+}
+
+.accordion-dark {
+  --bs-accordion-btn-bg: #212529;
+  --bs-accordion-btn-color: white;
+  --bs-accordion-active-bg: #495057;
+  --bs-accordion-active-color: white;
+  --bs-accordion-bg: #212529;
+  --bs-accordion-color: white;
+}
+
+.accordion-button-dark:after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
 }
 
 .weather-data-banner {
@@ -207,7 +224,12 @@ footer {
 
 .footer-text {
   font-size: 0.8rem;
-  color: rgb(91, 91, 91);
+  color: rgb(154, 154, 154);
+}
+
+.dark-footer {
+  background-color: #343a40;
+  color: white;
 }
 
 .social-link {

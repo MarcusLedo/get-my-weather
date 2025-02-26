@@ -73,7 +73,7 @@ modalForm.addEventListener("submit", async function (e) {
 
 btnToggleLightDark.addEventListener("click", function (e) {
   changeIconToDark(isDarkMode, iconPath);
-  //toggleLightAndDarkMode();
+  toggleLightAndDarkMode(isDarkMode);
   isDarkMode = isDarkMode ? false : true;
 });
 
@@ -242,17 +242,38 @@ function changeIconToDark(isDarkMode, iconPathField) {
   }
 }
 
-function toggleLightAndDarkMode() {
-  // change button icon
-  // Change Navbar class="navbar bg-dark" data-bs-theme="dark"
-  // button add bg-dark
-  // body bg-dark
-  // change banner img
-  // change text color (carousel)
-  // change text-color (cards)
-  // change cards color (cards)
-  // change FAQ Color (accordion)
-  // change footer color
+function toggleLightAndDarkMode(isDarkMode) {
+  const navbar = document.querySelector(".navbar");
+  const body = document.querySelector("body");
+  const carouselText = document.querySelector(".slider-paragraph");
+  const cardsSectionText = document.querySelector(".cards-sec-label");
+  const cards = document.querySelectorAll(".card");
+  const faqLabel = document.querySelector(".faq-label");
+  const accordion = document.querySelector(".accordion");
+  const accordionButtons = document.querySelectorAll(".accordion-button");
+  const footer = document.querySelector("footer");
+
+  navbar.classList.toggle("bg-dark");
+  body.classList.toggle("bg-dark");
+  carouselText.classList.toggle("text-white");
+  cardsSectionText.classList.toggle("text-white");
+  faqLabel.classList.toggle("text-white");
+  accordion.classList.toggle("accordion-dark");
+  footer.classList.toggle("dark-footer");
+
+  for (const card of cards) {
+    card.classList.toggle("text-bg-dark");
+  }
+
+  for (const btn of accordionButtons) {
+    btn.classList.toggle("accordion-button-dark");
+  }
+
+  if (isDarkMode) {
+    navbar.setAttribute("data-bs-theme", "light");
+  } else {
+    navbar.setAttribute("data-bs-theme", "dark");
+  }
 }
 
 function closeModal(modal) {
