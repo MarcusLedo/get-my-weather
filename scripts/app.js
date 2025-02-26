@@ -101,7 +101,6 @@ async function getWeatherData(cityName, key) {
   const res = await fetch(url);
   const data = await res.json();
 
-  console.log(data);
   return data;
 }
 
@@ -165,8 +164,6 @@ function updateWeatherSection(city) {
   const cityHumidity = getHumidityElem();
   const weatherIcon = getWeatherIconElem();
   const cityTemperature = getTemperatureElem();
-
-  console.log(city);
 
   cityName.innerText = city.name;
   cityDate.innerText = city.date;
